@@ -1,0 +1,13 @@
+# ignore vscode folder
+.vscode
+
+# ignore sub config folder
+**/.vscode
+**/.idea
+**/Target
+**/Debug
+
+# ignore common local folder
+test
+dev-docs
+
