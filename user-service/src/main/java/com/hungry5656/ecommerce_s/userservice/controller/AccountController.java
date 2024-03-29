@@ -1,9 +1,13 @@
 package com.hungry5656.ecommerce_s.userservice.controller;
 
-
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
+
+import com.hungry5656.ecommerce_s.userservice.service.AccountService;
+import com.hungry5656.ecommerce_s.userservice.web.CreateAccountRequest;
+import com.hungry5656.ecommerce_s.userservice.web.CreateAccountResponse;
+import com.hungry5656.ecommerce_s.userservice.web.GetAccountTokenRequest;
 import jakarta.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,18 +28,26 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 /**
  * @author: Sizhuo Sun
- * @date: 2024-03-24
+ * @date: 2024-03-28
  */
 @RestController
 @CrossOrigin
-public class UserController {
+public class AccountController {
 
-    @PostMapping("/user")
-    public ResponseEntity<?> createUser() {
+    @Autowired
+    private AccountService accountService;
 
-        // TODO: call create User Service
-        CreateUserAccountResponse response = ;
+    @PostMapping("/signup")
+    public ResponseEntity<?> createAccount(CreateAccountRequest createAccountRequest) {
+        CreateAccountResponse createAccountResponse = accountService.registerAccount(createAccountRequest);
 
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
+        return new ResponseEntity<>(createAccountResponse, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/signin")
+    public ResponseEntity<?> getAccountToken(GetAccountTokenRequest getAccountTokenRequest) {
+        CreateAccountResponse createAccountResponse = accountService.loginAccount(getAccountTokenRequest);
+
+        return new ResponseEntity<>(createAccountResponse, HttpStatus.CREATED);
     }
 }
