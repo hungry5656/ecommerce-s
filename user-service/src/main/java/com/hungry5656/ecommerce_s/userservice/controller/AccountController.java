@@ -8,6 +8,7 @@ import com.hungry5656.ecommerce_s.userservice.service.AccountService;
 import com.hungry5656.ecommerce_s.userservice.web.CreateAccountRequest;
 import com.hungry5656.ecommerce_s.userservice.web.CreateAccountResponse;
 import com.hungry5656.ecommerce_s.userservice.web.GetAccountTokenRequest;
+import com.hungry5656.ecommerce_s.userservice.web.GetAccountTokenResponse;
 import jakarta.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,8 +47,8 @@ public class AccountController {
 
     @PostMapping("/signin")
     public ResponseEntity<?> getAccountToken(GetAccountTokenRequest getAccountTokenRequest) {
-        CreateAccountResponse createAccountResponse = accountService.loginAccount(getAccountTokenRequest);
+        GetAccountTokenResponse getAccountTokenResponse = accountService.loginAccount(getAccountTokenRequest);
 
-        return new ResponseEntity<>(createAccountResponse, HttpStatus.CREATED);
+        return new ResponseEntity<>(getAccountTokenResponse, HttpStatus.CREATED);
     }
 }

@@ -31,10 +31,10 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 public class UserController {
 
     @PostMapping("/user")
+    // TODO: set the admin permission
     public ResponseEntity<?> createUser() {
 
         // TODO: call create User Service
-        CreateUserAccountResponse response = ;
 
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }

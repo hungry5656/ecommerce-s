@@ -2,6 +2,7 @@ package com.hungry5656.ecommerce_s.userservice.web;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,4 +25,8 @@ public class GetAccountTokenRequest {
     @NotBlank
     @Size(min = 8, max = 32, message = "password should be between 8 and 32 characters")
     private String password;
+
+    @NotBlank
+    @Pattern(regexp = "password", message = "authMethod should be either password or 3rd party")
+    private String authMethod;
 }

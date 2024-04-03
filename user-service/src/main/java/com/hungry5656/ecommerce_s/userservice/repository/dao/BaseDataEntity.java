@@ -13,6 +13,11 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.io.Serializable;
 import java.time.Instant;
 
+
+/**
+ * @author: Sizhuo Sun
+ * @date: 2024-03-28
+ */
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(

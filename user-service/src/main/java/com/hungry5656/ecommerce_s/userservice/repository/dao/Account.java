@@ -15,13 +15,13 @@ import lombok.*;
 @AllArgsConstructor
 @Table(name = "ACCOUNT")
 @Builder
-public class Account extends BaseDataEntity {
+public abstract class Account extends BaseDataEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "USER_ID", updatable = false, nullable = false)
     private String userId;
 
-    @Column(name = "USER_NAME", updatable = false, nullable = false)
+    @Column(name = "USER_NAME", nullable = false)
     private String userName;
 
     @Column(name = "PASSWORD", nullable = false)
@@ -36,12 +36,16 @@ public class Account extends BaseDataEntity {
     @Column(name = "EMAIL", nullable = false)
     private String email;
 
-    public Account(String userName, String password, String firstName, String lastName, String email) {
+    @Column(name = "BUSINESS_FLAG", nullable = false)
+    private Boolean businessFlag;
+
+    public Account(String userName, String password, String firstName, String lastName, String email, Boolean businessFlag) {
         this.userName = userName;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.businessFlag = businessFlag;
     }
 
 }
